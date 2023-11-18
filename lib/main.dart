@@ -4,7 +4,7 @@ import 'package:circular_reveal_animation/circular_reveal_animation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: MyHomePage(),
     );
   }
@@ -47,6 +47,20 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            // Reset the state variables
+            list.clear();
+            colorList.clear();
+            selectedCircleIndex = -1;
+
+            // Stop the animation
+            animationController.reset();
+          });
+        },
+        child: const Icon(Icons.refresh),
+      ),
       appBar: AppBar(
         title: const Text('Drag Position Example'),
       ),
