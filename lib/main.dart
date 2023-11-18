@@ -8,6 +8,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,11 +19,13 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
+class MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation animation;
@@ -44,16 +48,13 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Drag Position Example'),
+        title: const Text('Drag Position Example'),
       ),
       body: GestureDetector(
         onPanStart: (DragStartDetails details) {
           setState(() {
             list.add(details.localPosition);
             var ix = Color(Random().nextInt(0xFFFFFFFF)).withOpacity(1.0);
-            if (colorList.contains(ix)) {
-              print("bety");
-            }
             colorList.add(ix);
           });
         },
